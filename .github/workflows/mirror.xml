@@ -9,11 +9,14 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout source repository
+        uses: actions/checkout@v3
 
       - name: Push to organization repo
+        env:
+          TOKEN: ${{ secrets.ORG_REPO_PAT }}
         run: |
           git config --global user.name "choihooo"
           git config --global user.email "hochoi8621@naver.com"
-          git remote add org https://x-access-token:${{ secrets.ORG_REPO_PAT }}@github.com/ALTTOOO/CH.git
+          git remote add org https://x-access-token:${TOKEN}@github.com/ALTTOOO/CH.git
           git push org main --force
