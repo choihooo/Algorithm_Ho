@@ -8,13 +8,15 @@ on:
 jobs:
   mirror:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout source repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Push to organization repo
+        env:
+          TOKEN: ${{ secrets.ORG_PUSH_PAT }} # 개인 레포에 설정한 PAT 시크릿
         run: |
           git config --global user.name "choihooo"
           git config --global user.email "hochoi8621@naver.com"
-          git remote add org https://x-access-token:${{ secrets.ORG_REPO_PAT }}@github.com/ALTTOOO/CH.git
+          git remote add org https://x-access-token:${TOKEN}@github.com/ALTTOOO/CH.git
           git push org main --force
