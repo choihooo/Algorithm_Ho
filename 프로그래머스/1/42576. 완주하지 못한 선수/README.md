@@ -75,3 +75,29 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+# 좋은 답
+```js
+function solution(participant, completion) {
+  const map = {}; // 참가자 저장할 객체
+
+  // 참가자 카운트
+  for (let name of participant) {
+    map[name] = (map[name] || 0) + 1; // 이름이 없을때 0에 +1 하기 사실상 필요없지만 JS 관례
+  }
+
+  // 완주자 카운트 감소
+  for (let name of completion) {
+    map[name] -= 1;
+  }
+
+  // 카운트가 1 이상인 사람 찾기
+  for (let name in map) {
+    if (map[name] > 0) {
+      return name;
+    }
+  }
+```
+
+
+}
