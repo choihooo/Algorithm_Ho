@@ -1,72 +1,26 @@
-# [level 2] 올바른 괄호 - 12909 
+# 다른 풀이
+```js
+function solution(s) {
+    let cum = 0
+    for (let paren of s) {
+        cum += paren === '(' ? 1 : -1
+        if (cum < 0) {
+            return false
+        }
+    }
+    return cum === 0 ? true : false;
+}
+```
+cum은 여는 괄호의 개수에서 닫는 괄호 개수를 뺀 누적값.
+문자열을 왼쪽부터 한 글자씩 보면서:
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12909) 
+- '('이면 cum += 1
+- ')'이면 cum -= 1
 
-### 성능 요약
+만약 cum이 중간에 0보다 작아지면, 닫는 괄호가 먼저 나온 거니까 잘못된 괄호 → 바로 false 리턴.
 
-메모리: 37.5 MB, 시간: 6.04 ms
+끝까지 돌았을 때:
 
-### 구분
+- cum === 0이면 괄호 짝이 딱 맞으므로 true
+- cum !== 0이면 괄호가 남거나 부족한 거라 false
 
-코딩테스트 연습 > 스택／큐
-
-### 채점결과
-
-정확성: 69.5<br/>효율성: 30.5<br/>합계: 100.0 / 100.0
-
-### 제출 일자
-
-2025년 04월 11일 15:12:12
-
-### 문제 설명
-
-<p>괄호가 바르게 짝지어졌다는 것은 '(' 문자로 열렸으면 반드시 짝지어서 ')' 문자로 닫혀야 한다는 뜻입니다. 예를 들어</p>
-
-<ul>
-<li>"()()" 또는 "(())()" 는 올바른 괄호입니다.</li>
-<li>")()(" 또는 "(()(" 는 올바르지 않은 괄호입니다.</li>
-</ul>
-
-<p>'(' 또는 ')' 로만 이루어진 문자열 s가 주어졌을 때, 문자열 s가 올바른 괄호이면 true를 return 하고, 올바르지 않은 괄호이면 false를 return 하는 solution 함수를 완성해 주세요.</p>
-
-<h5>제한사항</h5>
-
-<ul>
-<li>문자열 s의 길이 : 100,000 이하의 자연수</li>
-<li>문자열 s는 '(' 또는 ')' 로만 이루어져 있습니다.</li>
-</ul>
-
-<hr>
-
-<h5>입출력 예</h5>
-<table class="table">
-        <thead><tr>
-<th>s</th>
-<th>answer</th>
-</tr>
-</thead>
-        <tbody><tr>
-<td>"()()"</td>
-<td>true</td>
-</tr>
-<tr>
-<td>"(())()"</td>
-<td>true</td>
-</tr>
-<tr>
-<td>")()("</td>
-<td>false</td>
-</tr>
-<tr>
-<td>"(()("</td>
-<td>false</td>
-</tr>
-</tbody>
-      </table>
-<h5>입출력 예 설명</h5>
-
-<p>입출력 예 #1,2,3,4<br>
-문제의 예시와 같습니다.</p>
-
-
-> 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
