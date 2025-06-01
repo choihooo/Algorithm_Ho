@@ -1,3 +1,4 @@
+let arr = [5, 2, 9, 1, 5, 6];
 let sorted = new Array(100000);
 mergeSort(arr, 0, arr.length - 1);
 
