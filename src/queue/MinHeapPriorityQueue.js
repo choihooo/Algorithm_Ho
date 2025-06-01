@@ -50,7 +50,6 @@ class PriorityQueue {
   _bubbleDown() {
     let idx = 0;
     const length = this.heap.length;
-    const element = this.heap[0];
 
     while (true) {
       let leftIdx = 2 * idx + 1;
