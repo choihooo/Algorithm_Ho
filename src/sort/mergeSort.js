@@ -14,7 +14,7 @@ function mergeSort(arr, left, right) {
 function merge(arr, left, mid, right) {
   let i = left;
   let j = mid + 1;
-  let k = right;
+  let k = left;
 
   while (i <= mid && j <= right) {
     if (arr[i] <= arr[j]) {
@@ -27,11 +27,11 @@ function merge(arr, left, mid, right) {
   while (i <= mid) {
     sorted[k++] = arr[i++];
   }
-  while (k <= right) {
+  while (j <= right) {
     sorted[k++] = arr[j++];
   }
 
-  for (let l = left; l < right; l++) {
+  for (let l = left; l <= right; l++) {
     arr[l] = sorted[l];
   }
 }
